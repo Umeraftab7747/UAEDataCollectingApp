@@ -1,11 +1,22 @@
-import { StyleSheet, Text, View, ActivityIndicator } from "react-native";
+import { StyleSheet, Text, View, ActivityIndicator, Image } from "react-native";
 import React from "react";
 import { w, h } from "react-native-responsiveness";
+import { useToast } from "react-native-toast-notifications";
 
-const Splash = () => {
+const Splash = ({ navigation }) => {
+  const toast = useToast();
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      navigation.navigate("Login");
+    }, 3000);
+  }, []);
+
   return (
     <View style={styles.MainContainer}>
-      <View style={styles.topcontainer}></View>
+      <View style={styles.topcontainer}>
+        <Image style={styles.img} source={require("../../assets/logo.png")} />
+      </View>
 
       <View style={styles.BottomContainer} />
       <ActivityIndicator size="large" color="#3D8361" />
@@ -26,13 +37,19 @@ const styles = StyleSheet.create({
   topcontainer: {
     width: 170,
     height: 170,
-    backgroundColor: "#3D8361",
-    marginTop: "2%",
+    marginTop: "5%",
     borderRadius: h("1%"),
+    justifyContent: "center",
+    alignItems: "center",
   },
   BottomContainer: {
     width: "100%",
     height: "10%",
     marginBottom: h("55%"),
+  },
+  img: {
+    width: "70%",
+    height: "70%",
+    resizeMode: "contain",
   },
 });

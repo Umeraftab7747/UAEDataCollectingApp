@@ -14,8 +14,8 @@ export default Header;
 
 const styles = StyleSheet.create({
   TopHeader: {
-    width: "100%",
-    height: "7%",
+    width: w("100%"),
+    height: h("7%"),
     backgroundColor: "#3D8361",
     justifyContent: "center",
     alignItems: "center",

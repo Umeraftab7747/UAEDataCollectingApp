@@ -2,9 +2,9 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
 import { w, h } from "react-native-responsiveness";
 
-const Button = ({ text }) => {
+const Button = ({ text, onPress }) => {
   return (
-    <TouchableOpacity style={styles.ButtonContainer}>
+    <TouchableOpacity onPress={onPress} style={styles.ButtonContainer}>
       <Text style={styles.Text}>{text}</Text>
     </TouchableOpacity>
   );
@@ -14,7 +14,7 @@ export default Button;
 
 const styles = StyleSheet.create({
   ButtonContainer: {
-    width: "80%",
+    width: w("80%"),
     height: h("7%"),
     justifyContent: "center",
     alignItems: "center",
