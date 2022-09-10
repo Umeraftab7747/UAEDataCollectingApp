@@ -6,6 +6,11 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { ToastProvider } from "react-native-toast-notifications";
 
+// imp
+import { Provider } from "react-redux";
+import { Store } from "./src/redux/store";
+// imp
+
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 //screens
@@ -60,21 +65,23 @@ function MyTabs() {
 export default function App() {
   return (
     <>
-      <ToastProvider successColor="#3D8361" textStyle={{ color: "white" }}>
-        <SafeAreaView />
-        <StatusBar />
-        <NavigationContainer>
-          <Stack.Navigator screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="Splash" component={Splash} />
-            <Stack.Screen name="Login" component={Login} />
-            <Stack.Screen name="Home" component={Home} />
-            <Stack.Screen name="MyTabs" component={MyTabs} />
-            <Stack.Screen name="ItemDetail" component={ItemDetail} />
-            <Stack.Screen name="Form" component={Form} />
-            <Stack.Screen name="Profile" component={Profile} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </ToastProvider>
+      <Provider store={Store}>
+        <ToastProvider successColor="#3D8361" textStyle={{ color: "white" }}>
+          <SafeAreaView />
+          <StatusBar />
+          <NavigationContainer>
+            <Stack.Navigator screenOptions={{ headerShown: false }}>
+              <Stack.Screen name="Splash" component={Splash} />
+              <Stack.Screen name="Login" component={Login} />
+              <Stack.Screen name="Home" component={Home} />
+              <Stack.Screen name="MyTabs" component={MyTabs} />
+              <Stack.Screen name="ItemDetail" component={ItemDetail} />
+              <Stack.Screen name="Form" component={Form} />
+              <Stack.Screen name="Profile" component={Profile} />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </ToastProvider>
+      </Provider>
     </>
   );
 }
